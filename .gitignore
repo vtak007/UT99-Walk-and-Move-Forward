@@ -1,0 +1,9 @@
+# Claude Code session data
+.claude/
+
+# Temp files written by editors / Claude Code
+*.tmp.*
+
+# OS
+.DS_Store
+Thumbs.db
