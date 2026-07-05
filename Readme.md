@@ -38,7 +38,8 @@ You never press `Backspace` yourself; it is just the wire between the script and
 |---|---|
 | Tap **Mouse4** | Start walking forward, hands-free |
 | Tap **Mouse4** again | Stop |
-| Press any movement/combat key (W/A/S/D, fire, jump, weapon switch, etc.) | Cancels autorun immediately |
+| Press **Space** (jump) | Autorun cancels after ~20ms — jump is processed while walk is still active, so Jumpboots are not consumed |
+| Press any other movement/combat key (W/A/S/D, fire, weapon switch, etc.) | Cancels autorun immediately |
 
 Hotkeys are only active while Unreal Tournament is the foreground window.
 

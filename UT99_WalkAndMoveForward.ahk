@@ -114,7 +114,6 @@ return
 ~z::
 ~g::
 ~y::
-~Space::
 ~LAlt::
 ~RAlt::
 ~LCtrl::
@@ -138,6 +137,18 @@ return
 ~Down::
     if (autorun)
         StopAutorun()
+return
+
+; Space (jump) gets a delayed stop so bRun is still active when UT processes the
+; jump input — otherwise StopAutorun() drops Backspace before the jump lands,
+; UT sees no bRun, and jumpboots fire on what should be a normal walking jump.
+~Space::
+    if (autorun)
+        SetTimer, StopAfterJump, -20
+return
+
+StopAfterJump:
+    StopAutorun()
 return
 
 #IfWinActive

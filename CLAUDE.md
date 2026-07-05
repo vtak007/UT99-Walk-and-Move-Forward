@@ -61,6 +61,8 @@ All hotkeys are wrapped in `#IfWinActive ahk_exe UnrealTournament.exe`, so Mouse
 ### Cancel-key list
 The `~`-prefixed cancel block lists every movement/combat/weapon key in the current `User.ini` so "any key cancels" holds in practice. Edit this list to add/remove keys. `~` lets each press still reach the game.
 
+**Space (jump) uses a delayed cancel:** `~Space::` is handled separately from the shared cancel block. Instead of calling `StopAutorun()` immediately, it schedules a one-shot 20ms timer (`SetTimer, StopAfterJump, -20`). This keeps bRun active when UT processes the jump input. If `StopAutorun()` ran first, Backspace would release before UT sees the Space key-down, UT would see a running jump (no bRun), and Jumpboots would be consumed. The 20ms delay (~2 frames at 100fps) lets UT process the jump as a walking jump (no boots consumed), then autorun stops. The random case — `RepeatWalkKey`'s up+down cycle coinciding with a jump — shares the same root cause as the forward-dodge bug and is pending the forward/bRun key split (Option A).
+
 ### Stuck-key safety
 `OnExit("ReleaseOnExit")` releases the walk key (`WalkKeyUp()`) if autorun is active when the script exits, so it is never left logically held.
 
