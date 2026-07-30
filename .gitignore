@@ -4,6 +4,9 @@
 # Temp files written by editors / Claude Code
 *.tmp.*
 
+# Windows shortcuts (machine-specific)
+*.lnk
+
 # OS
 .DS_Store
 Thumbs.db
